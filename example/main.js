@@ -86,7 +86,49 @@ $(function() {
      * Network.js configuration
      */
 
-    var net = new Network();
+    var settings = {
+                        latency: {
+                            // Where is located your `network.php` file.
+                            endpoint: './network.php',
+                            // How many measures should be returned.
+                            measures: 5,
+                            // How much attempts to get a valid value should be done for each measure.
+                            attempts: 3
+                        },
+
+                        upload: {
+                            // Where is located your `network.php` file.
+                            endpoint: './network.php',
+                            // The delay while you want to take measures.
+                            delay: 8000,
+
+                            data: {
+                                // The amount of data to initially use.
+                                size: 2 * 1024 * 1024, // 2 MB
+
+                                // If the measure period can't reach the delay defined in the settings,
+                                // the data amount is multiplied by the following value.
+                                multiplier: 2
+                            }
+                        },
+
+                        download: {
+                            // Where is located your `network.php` file.
+                            endpoint: './network.php',
+                            // The delay while you want to take measures.
+                            delay: 8000,
+
+                            data: {
+                                // The amount of data to initially use.
+                                size: 10 * 1024 * 1024, // 10 MB
+
+                                // If the measure period can't reach the delay defined in the settings,
+                                // the data amount is multiplied by the following value.
+                                multiplier: 2
+                            }
+                        }
+                    }
+    var net = new Network(settings);
 
     function start(size) {
         UI.notice(UI.delimiter(
