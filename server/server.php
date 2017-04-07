@@ -4,6 +4,7 @@ mb_internal_encoding('UTF-8');
 
 // Allow cross-site HTTP requests
 header('Access-Control-Allow-Origin: *');
+header("Access-Control-Allow-Headers: Origin, X-Requested-With, Content-Type, Accept");
 
 // The connection must be closed after each response. Allowing the client to correctly estimate the network latency.
 header('Connection: close');
